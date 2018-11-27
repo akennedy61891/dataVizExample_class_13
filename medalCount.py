@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 golds = []
 silvers = []
@@ -27,3 +28,21 @@ print('processed', line_count, 'rows of data')
 print('gold medals won: ', len(golds))
 print('silver medals won:', len(silvers))
 print('bronze medals won:', len(bronzes))
+
+pct_gold = len(golds) / line_count * 100
+pct_silver = len(silvers) / line_count * 100
+pct_bronze = len(bronzes) / line_count * 100
+
+#do some math here and draw a pie chart based on last week's example 
+labels = "Gold", "Silver", "Bronze"
+sizes = [pct_gold, pct_silver, pct_bronze]
+colors = ['yellowgreen', 'lightcoral', 'lightskyblue']
+explode = (0.1, 0.1, 0.1)
+
+plt.pie(sizes, explode=explode, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+plt.axis('equal')
+
+plt.legend(labels, loc=1)
+plt.title("Medals by Colour")
+plt.show()
+plt.show()
